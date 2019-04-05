@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 10
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@
       "id": 5,
       "name": "Rex",
       "image": "http://umich.edu/~chemh215/W11HTML/SSG5/ssg5.2/FRex.png",
-      "likes": 1
+      "likes": 2
     },
     {
       "id": 6,
@@ -46,7 +46,43 @@
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": -1
+    },
+    {
+      "name": "Ali",
+      "image": "https://cdn.bulbagarden.net/upload/thumb/8/8b/149Dragonite.png/250px-149Dragonite.png",
+      "likes": 3,
+      "id": 9
+    },
+    {
+      "name": "khang",
+      "image": "https://cdn.bulbagarden.net/upload/thumb/b/b8/059Arcanine.png/1200px-059Arcanine.png",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Louis",
+      "image": "https://cdn.bulbagarden.net/upload/thumb/c/c6/094Gengar.png/250px-094Gengar.png",
+      "likes": 3,
+      "id": 12
+    },
+    {
+      "name": "Tom",
+      "image": "https://cdn.bulbagarden.net/upload/thumb/8/8f/068Machamp.png/250px-068Machamp.png",
+      "likes": 3,
+      "id": 13
+    },
+    {
+      "name": "Fez",
+      "image": "https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/e/e0/Starmie.gif?width=325",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "name": "Byron",
+      "image": "https://cdn.bulbagarden.net/upload/thumb/c/c6/034Nidoking.png/250px-034Nidoking.png",
+      "likes": 0,
+      "id": 15
     }
   ]
 }
