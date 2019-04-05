@@ -97,3 +97,13 @@ button:hover {
   font-family: monospace;
   margin: 3px;
 }
+
+.like-btn{
+  height: 2rem
+}
+
+.del-btn {
+  font-size: 12px;
+  height: 2rem;
+  background-color: lightgrey;
+}
