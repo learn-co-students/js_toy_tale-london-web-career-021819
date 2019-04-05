@@ -102,7 +102,7 @@ button:hover {
   height: 2rem
 }
 
-.del-btn {
+.del-btn, .sort-btn {
   font-size: 12px;
   height: 2rem;
   background-color: lightgrey;

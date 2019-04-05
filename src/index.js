@@ -1,9 +1,17 @@
+//////////////////////////////////////////////////////
+/*               FREQ USED VARIABLES                */
+//////////////////////////////////////////////////////
+
 const addBtn = document.querySelector('#new-toy-btn')
 const toyForm = document.querySelector('.container')
 const toyColl = document.querySelector('#toy-collection')
 const URL = "http://localhost:3000/toys"
 let newToy = false
 
+
+//////////////////////////////////////////////////////
+/*                EVENT LISTENERS                   */
+//////////////////////////////////////////////////////
 
 //Show or Hide create new toy form onclick
 addBtn.addEventListener('click', () => {
@@ -26,8 +34,7 @@ toyForm.addEventListener('submit', (event) => {
     .then(addToy)
 })
 
-
-
+//Whole document event listeners
 document.addEventListener('click', (event) => {
   //Add new like to database and DOM on like button click
   if (event.target.className == "like-btn") {
@@ -52,35 +59,30 @@ document.addEventListener('click', (event) => {
 })
 
 
-//Deletes the toy from the DB
-function destroyToy(toyId) {
-  return fetch(URL + `/${toyId}`, {
-    method: "DELETE"
-  }).then(resp => resp.json())
+//////////////////////////////////////////////////////
+/*                   DOM STUFF                     */
+//////////////////////////////////////////////////////
+
+//Adds a toy to the DOM
+function addToy(toy) {
+  const toyDiv = document.createElement('div')
+  toyDiv.className = "card"
+  toyDiv.id = `toy-id-${toy.id}`
+
+  toyDiv.innerHTML = `
+  <h2>${toy.name}</h2>
+  <img src='${toy.image}' class="toy-avatar" />
+  <p data-likes='${toy.likes}'>${toy.likes} Likes </p>
+  <button value="${toy.id}" class="like-btn">♡</button>
+  <button value="${toy.id}" class="del-btn">Delete</button>
+  `
+  toyColl.appendChild(toyDiv)
 }
 
-
-//Removes the toy from the DOM
-function deleteToy(toyId) {
-  let toyEl = document.querySelector("#toy-id-" + `${toyId}`)
-  toyEl.remove()
+//Loops through all toys adding them to the DOM
+function addToys(toys) {
+  toys.forEach(addToy)
 }
-
-
-//Updates like count in DB
-function createLike(id, newlikes) {
-  return fetch(URL + `/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      "likes": newlikes
-    })
-  }).then(resp => resp.json())
-}
-
 
 //Updates like count in DOM
 function addLike(toyId, newlikeCount) {
@@ -89,6 +91,22 @@ function addLike(toyId, newlikeCount) {
   likeEl.innerText = `${newlikeCount} Likes`
 }
 
+//Removes the toy from the DOM
+function deleteToy(toyId) {
+  let toyEl = document.querySelector("#toy-id-" + `${toyId}`)
+  toyEl.remove()
+}
+
+
+//////////////////////////////////////////////////////
+/*                   SERVER STUFF                   */
+//////////////////////////////////////////////////////
+
+//Fetches all toys from DB
+function fetchToys() {
+  return fetch(URL)
+    .then(resp => resp.json())
+}
 
 //Creates new toy in DB
 function createToy(name, image) {
@@ -106,36 +124,31 @@ function createToy(name, image) {
   }).then(resp => resp.json())
 }
 
+//Updates like count in DB
+function createLike(id, newlikes) {
+  return fetch(URL + `/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      "likes": newlikes
+    })
+  }).then(resp => resp.json())
+}
 
-//Fetches all toys from DB
-function fetchToys() {
-  return fetch(URL)
-    .then(resp => resp.json())
+//Deletes the toy from the DB
+function destroyToy(toyId) {
+  return fetch(URL + `/${toyId}`, {
+    method: "DELETE"
+  }).then(resp => resp.json())
 }
 
 
-//Adds a toy to the DOM
-function addToy(toy) {
-  const toyDiv = document.createElement('div')
-  toyDiv.className = "card"
-  toyDiv.id = `toy-id-${toy.id}`
-
-  toyDiv.innerHTML = `
-    <h2>${toy.name}</h2>
-    <img src='${toy.image}' class="toy-avatar" />
-    <p data-likes='${toy.likes}'>${toy.likes} Likes </p>
-    <button value="${toy.id}" class="like-btn">♡</button>
-    <button value="${toy.id}" class="del-btn">Delete</button>
-  `
-  toyColl.appendChild(toyDiv)
-}
-
-
-//Loops through all toys adding them to the DOM
-function addToys(toys) {
-  toys.forEach(addToy)
-}
-
+//////////////////////////////////////////////////////
+/*                   INITIALISE                     */
+//////////////////////////////////////////////////////
 
 //Runs the page
 function initialise() {
@@ -143,16 +156,5 @@ function initialise() {
     .then(addToys)
 }
 
-
-//One function to provoke them all.
+//One function to run them all.
 initialise()
-
-
-
-
-
-
-
-
-
-//
