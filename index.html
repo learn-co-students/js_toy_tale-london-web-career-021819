@@ -5,6 +5,8 @@
     <title>Toy Tale</title>
 
     <link rel="stylesheet" href="index.css">
+    <script defer type="text/javascript" src="src/api.js"></script>
+    <script defer type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
     
@@ -13,7 +15,7 @@
     </div>
 
     <div class="container">
-      <form class="add-toy-form" style="">
+      <form id="add-toy-form">
         <h3>Create a toy!</h3>
 
         <input type="text" name="name" value="" placeholder="Enter a toy's name..." class="input-text">
@@ -28,8 +30,5 @@
 
     <div id="toy-collection">
     </div>
-
-
-    <script type="text/javascript" src="src/index.js"></script>
   </body>
 </html>

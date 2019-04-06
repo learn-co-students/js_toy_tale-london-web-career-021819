@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 9
     },
     {
       "id": 2,
@@ -47,6 +47,29 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Jim",
+      "image": "https://www.pets4homes.co.uk/images/breeds/56/9b8f8158056fc5420a03372c9772678e.jpeg",
+      "id": 9
+    },
+    {
+      "name": "toy",
+      "image": "https://www.pets4homes.co.uk/images/breeds/56/9b8f8158056fc5420a03372c9772678e.jpeg",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "waffle",
+      "image": "https://www.pets4homes.co.uk/images/breeds/56/9b8f8158056fc5420a03372c9772678e.jpeg",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Buster",
+      "image": "https://i.pinimg.com/236x/51/73/72/517372d1343004b9b8aef9a2cc31196a--american-staffordshire-staffordshire-terriers.jpg",
+      "likes": 39,
+      "id": 12
     }
   ]
 }

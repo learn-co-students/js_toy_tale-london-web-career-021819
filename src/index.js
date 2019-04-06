@@ -1,8 +1,10 @@
-const addBtn = document.querySelector('#new-toy-btn')
-const toyForm = document.querySelector('.container')
-let addToy = false
+// get the stuff we want that's already on the page
+const addToyForm = document.querySelector('#add-toy-form');
+const toyCollection = document.querySelector('#toy-collection');
 
-// YOUR CODE HERE
+const addBtn = document.querySelector('#new-toy-btn');
+const toyForm = document.querySelector('.container');
+let addToy = false;
 
 addBtn.addEventListener('click', () => {
   // hide & seek with the form
@@ -15,5 +17,58 @@ addBtn.addEventListener('click', () => {
   }
 })
 
+// add a single toy to the page
+function renderToy (toy) {
+	const toyDiv = document.createElement('div')
+  toyDiv.className = 'card'
+  toyDiv.id = `toy-${toy.id}`
+	toyDiv.innerHTML = `
+    	<h2>${toy.name}</h2>
+    	<img src="${toy.image}" class="toy-avatar" />
+    	<p class='likes'>${toy.likes} Likes </p>
+    	<button class="like-btn">Like <3</button>
+	`
+  toyCollection.appendChild(toyDiv)
+  increaseToylikesListener(toy, toyDiv)
+}
 
-// OR HERE!
+// increase toy likes
+function increaseToylikesListener (toy, toyDiv) {
+  const likeBtn = toyDiv.querySelector('.like-btn')
+  const likeEl = toyDiv.querySelector('.likes')
+  likeBtn.addEventListener('click', () => {
+    toy.likes++
+
+    updateToy(toy)
+      .then(() => {
+        likeEl.innerText = `${toy.likes} Likes`
+      })
+      .catch(() => {
+        toy.likes--
+        alert('Server down. Please try again later.')
+      })
+  })
+}
+
+// add multiple toys to the page
+function renderToys (toys) {
+	toys.forEach(renderToy)
+}
+
+//  Add listener and runs addToyToServer
+function addListenerToCreateButton() {
+  addToyForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const [name, url] = [...e.target.querySelectorAll('input[type="text"]')]
+      .map(n => n.value);
+    createToy(name, url);
+    e.target.reset();
+  });
+}
+
+function init() {
+  getToys()
+  .then(renderToys);
+    addListenerToCreateButton();
+}
+init();
