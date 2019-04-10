@@ -124,7 +124,3 @@ function init() {
 
 //run the program
 init()
-
-function test() {
-  
-}
