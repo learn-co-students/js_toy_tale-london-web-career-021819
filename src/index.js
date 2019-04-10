@@ -47,7 +47,7 @@ function createToyListener() {
     toy.name = newToyName
     toy.image = newToyImage
     createToy(toy)
-    .then(displayToy)
+    .then(displayToy) //use then here otherwise the displayed toy won't have an id (not persisted in the JSON db)
   })
 }
 
@@ -76,7 +76,6 @@ function globalLikesListener() {
     }
   })
 }
-
 
 //*****SERVER*****
 
@@ -116,7 +115,6 @@ function updateToy(toy) {
 
 
 
-
 //*****ALL FUNCTIONS*****
 function init() {
   globalLikesListener()
@@ -124,4 +122,9 @@ function init() {
     .then(displayToys)
 }
 
+//run the program
 init()
+
+function test() {
+  
+}
